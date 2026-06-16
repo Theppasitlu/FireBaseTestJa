@@ -1,19 +1,11 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBdLQk38so5XBqGyz6PaP_-bNi8UbETCQk",
-  authDomain: "enviwater-ab389.firebaseapp.com",
-  projectId: "enviwater-ab389",
-  storageBucket: "enviwater-ab389.firebasestorage.app",
-  messagingSenderId: "100738016379",
-  appId: "1:100738016379:web:bfe5f5b35211d672e36ede",
-  measurementId: "G-XS5BGLFJCY"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// Initialize Firebase using compat SDK
+let db;
+if (typeof firebase !== 'undefined') {
+    if (firebase.apps.length === 0) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    db = firebase.firestore();
+}
 
 // Translations for Game page
 const translations = {
@@ -219,28 +211,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Load Games (Local Defaults + Firestore snapshot) ---
-    const gamesQuery = query(collection(db, "games"), orderBy("createdAt", "desc"));
-    
-    // Realtime listener
-    onSnapshot(gamesQuery, (snapshot) => {
-        customGames = [];
-        snapshot.forEach((doc) => {
-            const data = doc.data();
-            customGames.push({
-                id: doc.id,
-                title: data.title,
-                genre: data.genre,
-                description: data.description,
-                platforms: data.platforms || ["PC"],
-                rating: data.rating || 5,
-                image: "assets/default.png" // Default fallback generated illustration
+    if (db) {
+        db.collection("games").orderBy("createdAt", "desc").onSnapshot((snapshot) => {
+            customGames = [];
+            snapshot.forEach((doc) => {
+                const data = doc.data();
+                customGames.push({
+                    id: doc.id,
+                    title: data.title,
+                    genre: data.genre,
+                    description: data.description,
+                    platforms: data.platforms || ["PC"],
+                    rating: data.rating || 5,
+                    image: "assets/default.png"
+                });
             });
+            renderGames();
+        }, (error) => {
+            console.error("Error reading Firestore: ", error);
+            renderGames();
         });
+    } else {
         renderGames();
-    }, (error) => {
-        console.error("Error reading Firestore: ", error);
-        renderGames(); // Render fallback defaults if firestore blocked
-    });
+    }
 
     // --- Search & Filter Logic ---
     if (gameSearch) {
@@ -379,14 +372,17 @@ document.addEventListener('DOMContentLoaded', () => {
             formStatus.className = 'form-status hidden';
 
             try {
+                if (!db) {
+                    throw new Error("Firebase SDK not loaded");
+                }
                 // Save to Firebase Firestore
-                await addDoc(collection(db, "games"), {
+                await db.collection("games").add({
                     title: title,
                     genre: genre,
                     description: description,
                     rating: rating,
                     platforms: selectedPlatforms,
-                    createdAt: serverTimestamp()
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
                 // Success

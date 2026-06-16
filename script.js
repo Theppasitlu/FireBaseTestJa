@@ -1,19 +1,11 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBdLQk38so5XBqGyz6PaP_-bNi8UbETCQk",
-  authDomain: "enviwater-ab389.firebaseapp.com",
-  projectId: "enviwater-ab389",
-  storageBucket: "enviwater-ab389.firebasestorage.app",
-  messagingSenderId: "100738016379",
-  appId: "1:100738016379:web:bfe5f5b35211d672e36ede",
-  measurementId: "G-XS5BGLFJCY"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+// Initialize Firebase using compat SDK
+let db;
+if (typeof firebase !== 'undefined') {
+    if (firebase.apps.length === 0) {
+        firebase.initializeApp(firebaseConfig);
+    }
+    db = firebase.firestore();
+}
 
 const translations = {
     en: {
@@ -258,13 +250,16 @@ document.addEventListener('DOMContentLoaded', () => {
             formStatus.className = 'form-status hidden';
 
             try {
+                if (!db) {
+                    throw new Error("Firebase SDK not loaded");
+                }
                 // Add document to Cloud Firestore
-                await addDoc(collection(db, "contacts"), {
+                await db.collection("contacts").add({
                     name: name,
                     email: email,
                     phone: phone,
                     message: message,
-                    createdAt: serverTimestamp()
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
                 // Success
