@@ -42,7 +42,7 @@ const translations = {
         ftHelp: "Help Center",
         ftGuidelines: "Guidelines",
         ftFollow: "Follow Us",
-        ftRights: "© 2026 Nexus Business. All rights reserved."
+        ftRights: "© 2026 HPL Business. All rights reserved."
     },
     th: {
         home: "หน้าแรก",
@@ -77,7 +77,7 @@ const translations = {
         ftHelp: "ศูนย์ช่วยเหลือ",
         ftGuidelines: "ข้อตกลงและเงื่อนไข",
         ftFollow: "ติดตามเรา",
-        ftRights: "© 2026 Nexus Business. สงวนลิขสิทธิ์."
+        ftRights: "© 2026 HPL Business. สงวนลิขสิทธิ์."
     }
 };
 

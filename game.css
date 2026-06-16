@@ -40,10 +40,28 @@
     -webkit-text-fill-color: transparent;
 }
 
+.game-page .logo {
+    background: linear-gradient(45deg, #ff758f, #ff7b00, #70d6ff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    font-size: 1.9rem;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+
+.game-page .logo:hover {
+    transform: scale(1.1) rotate(-3deg);
+}
+
 /* Hero Section */
 .game-hero {
-    padding-top: 150px;
-    padding-bottom: 50px;
+    padding-top: 130px;
+    padding-bottom: 24px;
 }
 
 .hero-container-bubble {
@@ -51,7 +69,7 @@
     backdrop-filter: blur(20px);
     border: 3px solid #ffffff;
     border-radius: var(--border-radius-genz);
-    padding: 60px 40px;
+    padding: 36px 40px;
     text-align: center;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
     position: relative;
@@ -127,7 +145,7 @@
 .search-box {
     position: relative;
     width: 100%;
-    max-width: 500px;
+    max-width: 750px;
 }
 
 .search-icon {
@@ -241,7 +259,7 @@
 
 .card-img-container {
     position: relative;
-    height: 200px;
+    aspect-ratio: 16 / 9;
     width: 100%;
     overflow: hidden;
     background-color: var(--pastel-pink);
