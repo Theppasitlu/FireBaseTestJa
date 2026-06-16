@@ -1,0 +1,593 @@
+/* Gen-Z Styling System for Game Directory */
+
+:root {
+    --pastel-pink: #ffccd5;
+    --pastel-pink-dark: #ffb3c1;
+    --pastel-blue: #c0fdff;
+    --pastel-lavender: #e2cfea;
+    --pastel-mint: #d8f3dc;
+    --pastel-yellow: #fefae0;
+    --pastel-orange: #ffe5ec;
+    
+    --bg-gradient-genz: linear-gradient(135deg, #fff5f5 0%, #f0f4ff 50%, #fffbf0 100%);
+    --bg-gradient-genz-dark: linear-gradient(135deg, #1f1a24 0%, #15121e 50%, #1a1625 100%);
+    
+    --border-radius-genz: 24px;
+    --border-radius-card: 20px;
+    --border-radius-pill: 50px;
+    
+    --bouncy-shadow: 0 8px 0 rgba(0, 0, 0, 0.05);
+    --bouncy-shadow-hover: 0 16px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Light / Dark overrides for Gen-Z theme */
+.game-page {
+    background: var(--bg-gradient-genz);
+    color: #2b2b2b;
+    font-family: 'Outfit', 'Kanit', sans-serif;
+    transition: background 0.5s ease;
+}
+
+[data-theme="dark"] .game-page {
+    background: var(--bg-gradient-genz-dark);
+    color: #e0e0e0;
+}
+
+/* Navbar Logo Dot specific to Game page */
+.logo-dot {
+    background: linear-gradient(45deg, #ff758f, #ff7b00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Hero Section */
+.game-hero {
+    padding-top: 150px;
+    padding-bottom: 50px;
+}
+
+.hero-container-bubble {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    border: 3px solid #ffffff;
+    border-radius: var(--border-radius-genz);
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-normal);
+}
+
+[data-theme="dark"] .hero-container-bubble {
+    background: rgba(30, 25, 40, 0.6);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.badge-tag {
+    background-color: var(--pastel-pink);
+    color: #d90429;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: var(--border-radius-pill);
+    display: inline-block;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #fff;
+    box-shadow: var(--shadow-sm);
+}
+
+.hero-title-genz {
+    font-family: 'Outfit', 'Kanit', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.text-pastel-gradient {
+    background: linear-gradient(45deg, #ff758f, #ff7b00, #70d6ff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-subtitle-genz {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #555555;
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .hero-subtitle-genz {
+    color: #b0a8ba;
+}
+
+/* Search and Filters */
+.search-filter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.search-box {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 16px 24px 16px 52px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    border-radius: var(--border-radius-pill);
+    border: 3px solid #ffffff;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--bouncy-shadow);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #ff758f;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(255, 117, 143, 0.15);
+}
+
+[data-theme="dark"] .search-box input {
+    background: rgba(30, 25, 40, 0.6);
+    border-color: rgba(255, 255, 255, 0.05);
+    color: #e0e0e0;
+}
+
+.filter-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border-radius: var(--border-radius-pill);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: 3px solid #ffffff;
+    background: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--bouncy-shadow);
+}
+
+.filter-btn:hover {
+    transform: translateY(-2px);
+    border-color: #ff758f;
+}
+
+.filter-btn.active {
+    background: #ff758f;
+    color: #fff;
+    border-color: #ff758f;
+    box-shadow: 0 8px 16px rgba(255, 117, 143, 0.3);
+}
+
+[data-theme="dark"] .filter-btn {
+    background: rgba(30, 25, 40, 0.6);
+    border-color: rgba(255, 255, 255, 0.05);
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .filter-btn.active {
+    background: #ff758f;
+    color: #fff;
+    border-color: #ff758f;
+}
+
+/* Games Grid */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Game Card */
+.game-card-genz {
+    background: #ffffff;
+    border: 3px solid #ffffff;
+    border-radius: var(--border-radius-card);
+    overflow: hidden;
+    box-shadow: var(--bouncy-shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+}
+
+.game-card-genz:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: var(--bouncy-shadow-hover);
+    border-color: #ffb3c1;
+}
+
+[data-theme="dark"] .game-card-genz {
+    background: #1e1928;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.card-img-container {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--pastel-pink);
+}
+
+.card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.game-card-genz:hover .card-img-container img {
+    transform: scale(1.08);
+}
+
+.card-genre-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 12px;
+    border-radius: var(--border-radius-pill);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #2b2b2b;
+    box-shadow: var(--shadow-sm);
+}
+
+.card-body-genz {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-rating-genz {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.card-title-genz {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #2b2b2b;
+}
+
+[data-theme="dark"] .card-title-genz {
+    color: #fff;
+}
+
+.card-desc-genz {
+    font-size: 0.95rem;
+    color: #666666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+[data-theme="dark"] .card-desc-genz {
+    color: #b0a8ba;
+}
+
+.card-platforms {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.platform-tag {
+    background: var(--bg-alt);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.card-footer-genz {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-explore {
+    background: linear-gradient(135deg, #ff758f 0%, #ff7b00 100%);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: var(--border-radius-pill);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(255, 117, 143, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-explore:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(255, 117, 143, 0.3);
+}
+
+/* Bubbly Add Game Form Section */
+.add-game-section {
+    background-color: transparent;
+}
+
+.add-game-card {
+    background: #ffffff;
+    border: 3px solid #ffffff;
+    border-radius: var(--border-radius-genz);
+    padding: 50px 40px;
+    box-shadow: var(--bouncy-shadow);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+[data-theme="dark"] .add-game-card {
+    background: #1e1928;
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.form-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.form-desc {
+    color: #666;
+    font-size: 1.05rem;
+}
+
+[data-theme="dark"] .form-desc {
+    color: #b0a8ba;
+}
+
+.bubbly-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.form-group-genz {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group-genz label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #2b2b2b;
+}
+
+[data-theme="dark"] .form-group-genz label {
+    color: #e0e0e0;
+}
+
+.form-group-genz input[type="text"],
+.form-group-genz select,
+.form-group-genz textarea {
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 3px solid var(--border-color);
+    background: var(--bg-color);
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group-genz input[type="text"]:focus,
+.form-group-genz select:focus,
+.form-group-genz textarea:focus {
+    outline: none;
+    border-color: #ff758f;
+    box-shadow: 0 0 0 3px rgba(255, 117, 143, 0.15);
+}
+
+/* Custom Checkbox Group */
+.checkbox-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 18px;
+    width: 18px;
+    background-color: var(--bg-alt);
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    border-color: #ff758f;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #ff758f;
+    border-color: #ff758f;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Range Slider */
+.rating-picker {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.slider-pastel {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 12px;
+    border-radius: 10px;
+    background: var(--border-color);
+    outline: none;
+    transition: all 0.3s;
+}
+
+.slider-pastel::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ff758f;
+    border: 3px solid #fff;
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.slider-pastel::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+.rating-display {
+    font-size: 1.1rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Bubbly Button */
+.btn-pastel {
+    background: #ff758f;
+    color: #fff;
+    border: 3px solid #ff758f;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border-radius: var(--border-radius-pill);
+    box-shadow: 0 8px 0 #d90429;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-top: 10px;
+}
+
+.btn-pastel:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 0 #d90429;
+}
+
+.btn-pastel:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #d90429;
+}
+
+.btn-block-genz {
+    width: 100%;
+}
+
+/* Responsive Styles for Game page */
+@media (max-width: 768px) {
+    .hero-title-genz {
+        font-size: 2.5rem;
+    }
+    
+    .hero-container-bubble {
+        padding: 40px 24px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .add-game-card {
+        padding: 30px 20px;
+    }
+}

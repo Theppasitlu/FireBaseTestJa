@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Directory | Gen-Z Space</title>
+    <meta name="description" content="A vibrant Gen-Z style game directory and submission board.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&family=Kanit:wght@400;500;600;700&family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body class="game-page">
+    <header class="header">
+        <div class="container header-container">
+            <a href="Home.html" class="logo">NEXUS<span class="logo-dot">.</span></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="Home.html#home" class="nav-link" data-i18n="home">Home</a></li>
+                    <li><a href="Home.html#services" class="nav-link" data-i18n="services">Services</a></li>
+                    <li><a href="Home.html#about" class="nav-link" data-i18n="about">About</a></li>
+                    <li><a href="game.html" class="nav-link active" data-i18n="game">Game</a></li>
+                    <li><a href="Home.html#contact" class="nav-link btn-primary-outline" data-i18n="contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <button id="langToggle" class="control-btn" aria-label="Toggle Language">
+                    <span class="lang-text" id="langText">TH</span>
+                </button>
+                <button id="themeToggle" class="control-btn" aria-label="Toggle Theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="game-main">
+        <!-- Hero Gen-Z Section -->
+        <section class="game-hero">
+            <div class="container hero-container-bubble">
+                <div class="hero-bubble-content reveal-on-scroll">
+                    <span class="badge-tag" data-i18n="gameBadge">✨ Gamers Club</span>
+                    <h1 class="hero-title-genz" data-i18n="gameTitle">Level Up Your <span class="text-pastel-gradient">Database</span></h1>
+                    <p class="hero-subtitle-genz" data-i18n="gameSubtitle">Explore game details that have been searched and shared by our cool community. Add your favorites to expand the vibe!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Directory Section -->
+        <section class="directory-section">
+            <div class="container">
+                <!-- Search & Filters -->
+                <div class="search-filter-container reveal-on-scroll">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="gameSearch" placeholder="Search games..." data-i18n-placeholder="searchPlaceholder">
+                    </div>
+                    <div class="filter-tags">
+                        <button class="filter-btn active" data-filter="all" data-i18n="filterAll">All Games</button>
+                        <button class="filter-btn" data-filter="RPG" data-i18n="filterRpg">RPG</button>
+                        <button class="filter-btn" data-filter="Action" data-i18n="filterAction">Action</button>
+                    </div>
+                </div>
+
+                <!-- Games Grid -->
+                <div class="games-grid" id="gamesGrid">
+                    <!-- Game cards will be dynamically rendered here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Bubbly Add Game Form (Contact style) -->
+        <section class="add-game-section section-padding">
+            <div class="container">
+                <div class="add-game-card reveal-on-scroll">
+                    <div class="form-header">
+                        <h2 class="form-title" data-i18n="addGameTitle">Add A New Game 🎮</h2>
+                        <p class="form-desc" data-i18n="addGameDesc">Help us expand the list! Fill in the game info to add it to the live directory.</p>
+                    </div>
+                    
+                    <form id="addGameForm" class="bubbly-form">
+                        <div class="form-row">
+                            <div class="form-group-genz">
+                                <label for="gameTitleInput" data-i18n="gameFormTitle">Game Title</label>
+                                <input type="text" id="gameTitleInput" required placeholder="e.g. Valorant">
+                            </div>
+                            <div class="form-group-genz">
+                                <label for="gameGenreInput" data-i18n="gameFormGenre">Genre</label>
+                                <select id="gameGenreInput" required>
+                                    <option value="RPG">RPG</option>
+                                    <option value="Action">Action</option>
+                                    <option value="Adventure">Adventure</option>
+                                    <option value="Shooter">Shooter</option>
+                                    <option value="Strategy">Strategy</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group-genz">
+                            <label for="gameDescInput" data-i18n="gameFormDesc">Description</label>
+                            <textarea id="gameDescInput" rows="3" required placeholder="What makes this game awesome?"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group-genz">
+                                <label data-i18n="gameFormPlatforms">Platforms</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="platforms" value="PC" checked>
+                                        <span class="checkmark"></span> PC
+                                    </label>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="platforms" value="Mobile">
+                                        <span class="checkmark"></span> Mobile
+                                    </label>
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" name="platforms" value="Console">
+                                        <span class="checkmark"></span> Console
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group-genz">
+                                <label for="gameRatingInput" data-i18n="gameFormRating">Rating (1-5 Hearts)</label>
+                                <div class="rating-picker">
+                                    <input type="range" id="gameRatingInput" min="1" max="5" value="5" class="slider-pastel">
+                                    <span id="ratingVal" class="rating-display">💖 5/5</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-pastel btn-block-genz" id="submitBtn">
+                            <span id="btnText" data-i18n="gameFormSubmit">Add Game Now!</span>
+                            <span id="btnSpinner" class="spinner hidden"></span>
+                        </button>
+                        <div id="formStatus" class="form-status hidden"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="Home.html" class="logo text-white">NEXUS<span class="logo-dot">.</span></a>
+                <p data-i18n="footerDesc">Innovating the future of business, one digital experience at a time.</p>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="ftCompany">Company</h4>
+                <ul>
+                    <li><a href="Home.html#about" data-i18n="about">About</a></li>
+                    <li><a href="#" data-i18n="ftCareers">Careers</a></li>
+                    <li><a href="#" data-i18n="ftPress">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="ftResources">Resources</h4>
+                <ul>
+                    <li><a href="#" data-i18n="ftBlog">Blog</a></li>
+                    <li><a href="#" data-i18n="ftHelp">Help Center</a></li>
+                    <li><a href="#" data-i18n="ftGuidelines">Guidelines</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4 data-i18n="ftFollow">Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="LinkedIn">LI</a>
+                    <a href="#" aria-label="Instagram">IG</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p data-i18n="ftRights">&copy; 2026 Nexus Business. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="game.js"></script>
+</body>
+</html>
