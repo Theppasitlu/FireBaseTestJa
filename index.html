@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Business | Elevate Your Brand</title>
+    <meta name="description" content="A modern business landing page to showcase services and drive conversions.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&family=Kanit:wght@400;500;600;700&family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">NEXUS<span>.</span></a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link" data-i18n="home">Home</a></li>
+                    <li><a href="#services" class="nav-link" data-i18n="services">Services</a></li>
+                    <li><a href="#about" class="nav-link" data-i18n="about">About</a></li>
+                    <li><a href="#contact" class="nav-link btn-primary-outline" data-i18n="contact">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <button id="langToggle" class="control-btn" aria-label="Toggle Language">
+                    <span class="lang-text" id="langText">TH</span>
+                </button>
+                <button id="themeToggle" class="control-btn" aria-label="Toggle Theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content reveal-on-scroll">
+                    <h1 class="hero-title"><span data-i18n="heroTitle1">Driving </span><span class="text-red" data-i18n="heroTitle2">Innovation</span><span data-i18n="heroTitle3"> Forward.</span></h1>
+                    <p class="hero-subtitle" data-i18n="heroSubtitle">We empower modern businesses with cutting-edge solutions, sleek designs, and robust strategies to dominate the digital landscape.</p>
+                    <div class="hero-actions">
+                        <a href="#services" class="btn btn-primary" data-i18n="btnGetStarted">Get Started</a>
+                        <a href="#about" class="btn btn-secondary" data-i18n="btnLearnMore">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="geometric-shape shape-1"></div>
+                    <div class="geometric-shape shape-2"></div>
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team working in a modern office" class="hero-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services section-padding bg-alt">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <h2 class="section-title" data-i18n="servicesTitle">Our Services</h2>
+                    <p class="section-desc" data-i18n="servicesDesc">Tailored solutions designed to scale your business and accelerate growth.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h3 class="service-title" data-i18n="srv1Title">Digital Strategy</h3>
+                        <p class="service-text" data-i18n="srv1Desc">Comprehensive roadmaps to navigate the digital world and achieve sustainable success.</p>
+                    </div>
+                    <div class="service-card highlight-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h3 class="service-title text-white" data-i18n="srv2Title">Web Development</h3>
+                        <p class="service-text text-light-gray" data-i18n="srv2Desc">High-performance, modern web applications built with cutting-edge technologies.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                        </div>
+                        <h3 class="service-title" data-i18n="srv3Title">Brand Identity</h3>
+                        <p class="service-text" data-i18n="srv3Desc">Crafting unique, memorable brand experiences that resonate with your audience.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                        </div>
+                        <h3 class="service-title" data-i18n="srv4Title">Data Analytics</h3>
+                        <p class="service-text" data-i18n="srv4Desc">Actionable insights derived from deep data analysis to drive informed decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Bento Grid -->
+        <section class="features section-padding bg-dark">
+            <div class="container">
+                <div class="bento-grid">
+                    <div class="bento-item bento-large bento-red">
+                        <h3 data-i18n="bento1Title">Built for Speed</h3>
+                        <p data-i18n="bento1Desc">Optimized architecture ensuring lightning-fast load times.</p>
+                    </div>
+                    <div class="bento-item">
+                        <h3 class="text-white" data-i18n="bento2Title">Secure</h3>
+                        <p class="text-light-gray" data-i18n="bento2Desc">Enterprise-grade security protocols.</p>
+                    </div>
+                    <div class="bento-item image-bento">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Technology">
+                    </div>
+                    <div class="bento-item bento-wide">
+                        <div class="bento-content">
+                            <h3 class="text-white" data-i18n="bento3Title">Seamless Integration</h3>
+                            <p class="text-light-gray" data-i18n="bento3Desc">Connect with your favorite tools effortlessly via our robust APIs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container cta-container reveal-on-scroll">
+                <h2 class="cta-title" data-i18n="ctaTitle">Ready to Transform Your Business?</h2>
+                <p class="cta-desc" data-i18n="ctaDesc">Join hundreds of forward-thinking companies scaling with us.</p>
+                <a href="#contact" class="btn btn-dark btn-large text-white" data-i18n="btnTalk">Let's Talk</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo text-white">NEXUS<span class="text-red">.</span></a>
+                <p data-i18n="footerDesc">Innovating the future of business, one digital experience at a time.</p>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="ftCompany">Company</h4>
+                <ul>
+                    <li><a href="#" data-i18n="about">About</a></li>
+                    <li><a href="#" data-i18n="ftCareers">Careers</a></li>
+                    <li><a href="#" data-i18n="ftPress">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="ftResources">Resources</h4>
+                <ul>
+                    <li><a href="#" data-i18n="ftBlog">Blog</a></li>
+                    <li><a href="#" data-i18n="ftHelp">Help Center</a></li>
+                    <li><a href="#" data-i18n="ftGuidelines">Guidelines</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h4 data-i18n="ftFollow">Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="Twitter">TW</a>
+                    <a href="#" aria-label="LinkedIn">LI</a>
+                    <a href="#" aria-label="Instagram">IG</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p data-i18n="ftRights">&copy; 2026 Nexus Business. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
