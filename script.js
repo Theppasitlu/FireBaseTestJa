@@ -1,3 +1,20 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBdLQk38so5XBqGyz6PaP_-bNi8UbETCQk",
+  authDomain: "enviwater-ab389.firebaseapp.com",
+  projectId: "enviwater-ab389",
+  storageBucket: "enviwater-ab389.firebasestorage.app",
+  messagingSenderId: "100738016379",
+  appId: "1:100738016379:web:bfe5f5b35211d672e36ede",
+  measurementId: "G-XS5BGLFJCY"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 const translations = {
     en: {
         home: "Home",
@@ -29,6 +46,16 @@ const translations = {
         ctaTitle: "Ready to Transform Your Business?",
         ctaDesc: "Join hundreds of forward-thinking companies scaling with us.",
         btnTalk: "Let's Talk",
+        contactTitle: "Get In Touch",
+        contactDesc: "Have a project in mind or want to learn more about our services? Reach out to us.",
+        formName: "Full Name",
+        formEmail: "Email Address",
+        formPhone: "Phone Number",
+        formMessage: "Message",
+        btnSubmit: "Send Message",
+        btnSubmitting: "Sending...",
+        msgSuccess: "Thank you! Your message has been sent successfully.",
+        msgError: "Something went wrong. Please try again later.",
         footerDesc: "Innovating the future of business, one digital experience at a time.",
         ftCompany: "Company",
         ftCareers: "Careers",
@@ -70,6 +97,16 @@ const translations = {
         ctaTitle: "พร้อมที่จะพลิกโฉมธุรกิจของคุณหรือยัง?",
         ctaDesc: "ร่วมเป็นหนึ่งในบริษัทที่มีวิสัยทัศน์ที่กำลังเติบโตไปพร้อมกับเรา",
         btnTalk: "พูดคุยกับเรา",
+        contactTitle: "ติดต่อเรา",
+        contactDesc: "มีโปรเจกต์ที่สนใจหรือต้องการเรียนรู้เพิ่มเติมเกี่ยวกับบริการของเรา? ติดต่อเราได้เลย",
+        formName: "ชื่อ-นามสกุล",
+        formEmail: "ที่อยู่อีเมล",
+        formPhone: "เบอร์โทรศัพท์",
+        formMessage: "ข้อความ",
+        btnSubmit: "ส่งข้อความ",
+        btnSubmitting: "กำลังส่ง...",
+        msgSuccess: "ขอบคุณครับ! ข้อความของคุณถูกส่งเรียบร้อยแล้ว",
+        msgError: "เกิดข้อผิดพลาดบางอย่าง กรุณาลองใหม่อีกครั้งในภายหลัง",
         footerDesc: "สร้างสรรค์อนาคตของธุรกิจ ผ่านประสบการณ์ดิจิทัลที่เหนือกว่า",
         ftCompany: "บริษัท",
         ftCareers: "ร่วมงานกับเรา",
@@ -167,6 +204,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.textContent = translations[lang][key];
             }
         });
+        
+        // Also update placeholders for form inputs
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const messageInput = document.getElementById('message');
+        
+        if (nameInput) nameInput.placeholder = lang === 'en' ? 'John Doe' : 'สมชาย ใจดี';
+        if (emailInput) emailInput.placeholder = lang === 'en' ? 'john@example.com' : 'somchai@example.com';
+        if (phoneInput) phoneInput.placeholder = lang === 'en' ? '081-234-5678' : '081-234-5678';
+        if (messageInput) messageInput.placeholder = lang === 'en' ? 'How can we help you?' : 'พิมพ์ข้อความของคุณที่นี่...';
+
         // The button shows the language we CAN switch to
         langText.textContent = lang === 'en' ? 'TH' : 'EN';
         document.documentElement.lang = lang;
@@ -182,4 +231,54 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('lang', currentLang);
         setLanguage(currentLang);
     });
+
+    // --- Firebase Contact Form Submission ---
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnSpinner = document.getElementById('btnSpinner');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Set UI to loading state
+            submitBtn.disabled = true;
+            btnText.textContent = translations[currentLang].btnSubmitting || 'Sending...';
+            btnSpinner.classList.remove('hidden');
+            formStatus.className = 'form-status hidden';
+
+            try {
+                // Add document to Cloud Firestore
+                await addDoc(collection(db, "contacts"), {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    message: message,
+                    createdAt: serverTimestamp()
+                });
+
+                // Success
+                formStatus.textContent = translations[currentLang].msgSuccess || 'Thank you! Your message has been sent successfully.';
+                formStatus.className = 'form-status success';
+                contactForm.reset();
+            } catch (error) {
+                console.error("Error saving document to Firestore: ", error);
+                formStatus.textContent = translations[currentLang].msgError || 'Something went wrong. Please try again later.';
+                formStatus.className = 'form-status error';
+            } finally {
+                // Reset UI state
+                submitBtn.disabled = false;
+                btnText.textContent = translations[currentLang].btnSubmit || 'Send Message';
+                btnSpinner.classList.add('hidden');
+            }
+        });
+    }
 });
